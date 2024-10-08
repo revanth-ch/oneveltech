@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <!-- Logo Section -->
+        <div class="navbar-logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+
+        <!-- Navigation Sections -->
+        <div class="navbar-sections">
+            <a href="#1" id="i">Links</a>
+            <a href="#2">Percentages</a>
+            <a href="#3">Materials</a>
+            <a href="#2">Attendance</a>
+            <a href="#2">Unit-calculator</a>
+            <a href="#2">GPA</a>
+            <a href="#5">Feedback</a>
+        </div>
+    </div>
+        
+    <div class="slideshow-container">
+        <!-- Slides -->
+        <div class="mySlides fade">
+            <img src="images/direct-admission-in-veltech-university.jpg" alt="Links Section"></a>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="images/ezgif-frame-050.jpg" alt="Percentages Section"></a>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="images/Screenshot 2024-07-29 172445.png" alt="Materials Section"></a>
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+
+    <div class="Links" id="1"><h1>LINKS</h1></div>
+    
+    <div class="links-buttons">
+        <button class="link" onclick="window.open('http://ams.veltech.edu.in/', '_blank')">AMS</button>
+        <button class="link" onclick="window.open('http://results.veltech.edu.in/Stulogin/index.aspx', '_blank')">Results</button>
+        <button class="link" onclick="window.open('http://results.veltech.edu.in/Mentor/index1.aspx', '_blank')">SiS</button>
+        <button class="link" onclick="window.open('https://www.veltech.edu.in/', '_blank')">Official website</button>
+    </div>
+
+    <div class="Linkss" id="3"><h1>Materials</h1></div>
+
+    <div class="card-container">
+        <!-- Card for 1st Year -->
+        <div class="card">
+          <h2>1st Year</h2>
+          <button onclick="goToLink('https://drive.google.com/drive/folders/12tQU6b-NE870Sl0V3H9R3WMHaKYOx01b?usp=drive_link', '_blank')">NOTES</button>
+        </div>
+      
+        <!-- Card for 2nd Year -->
+        <div class="card">
+          <h2>2nd Year</h2>
+          <button onclick="goToLink('https://drive.google.com/drive/folders/1CW7EmaBrvPPRFuNi5mdby9wC1oD3vCe6?usp=drive_link' ,'_blank' )">NOTES</button>
+        </div>
+      
+        <!-- Card for 3rd Year -->
+        <div class="card">
+          <h2>3rd Year</h2>
+          <button onclick="goToLink('https://drive.google.com/drive/folders/19lxSHIjjlkW_AEC0gU0-MQJG6wT1-Yj2?usp=drive_link', '_blank' )">NOTES</button>
+        </div>
+      
+        <!-- Card for 4th Year -->
+        <div class="card">
+          <h2>4th Year</h2>
+          <button onclick="goToLink('https://drive.google.com/drive/folders/1wPHCdRJie3O9YV9Hjcq0LF7epPKbXc4w?usp=drive_link', '_blank' )">NOTES</button>
+        </div>
+      </div>
+
+    <div class="Links" id="2"><h1>Percentages</h1></div>
+    <div class="Percentages-button">
+        <button class="link" id="man">Attendance</button>
+        <button class="link" id="marks">Test</button>
+        <button class="link" onclick="showGPAOptions()">GPA</button>
+    </div>
+
+
+    <div class="attendance-section">
+        <!-- Intelligent Attendance -->
+        <!-- <button class="link" id="man" onclick="showInputs('ta-container')">Attendance</button> -->
+        <input type="number" id="enter" placeholder="total hours">
+        <input type="number" id="enter_2" placeholder="attended hours">
+        <button id="submit" class="link">Submit</button>
+        
+        <!-- Table for results -->
+        <table id="results">
+          <thead>
+            <tr>
+              <th>Percentage</th>
+              <th>Hours to Attend</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div>
+        <div class="Percentages-button">
+        <button id="unit" class="link">Unit Test</button>
+        <button id="mid" class="link">Mid</button></div>
+        <input type="number" placeholder="Test-1 marks" id="marks1">
+        <input type="number" placeholder="Test-2 marks" id="marks2">
+        <input type="number" placeholder="Test-3 marks" id="marks3" style="display: none;">
+        <input type="number" placeholder="Attendance mark" id="att" style="display: none;">
+        <input type="number" placeholder="Assignment mark" id="ass" style="display: none;">
+    
+        <button id="submit-2" class="link">Submit</button>
+        <div class="result-container">
+            <p id="result"></p>
+          </div>
+        </div>
+
+        <div id="gpaOptions" style="display: none;">
+          <button class="link" onclick="showGPASection()">Calculate GPA</button>
+          <button class="link" onclick="showCGPASection()">Calculate CGPA</button>
+      </div>
+      <!-- Section for GPA Calculator (hidden by default) -->
+<div id="gpaSection" style="display: none;">
+  <input type="number" id="numSubjectsGPA" min="1" placeholder="Enter number of subjects">
+  <button class="link" id="gpa-button" onclick="addSubjectRowsGPA()">Add Subjects</button>
+
+  <table id="subjectTableGPA">
+      <!-- Rows will be dynamically added here -->
+  </table>
+
+  <button class="link" id="gpa-button" onclick="calculateGPA()">Calculate GPA</button>
+  <button class="link" id="gpa-button" onclick="resetGPAForm()">Reset</button>
+
+  <p id="resultGPA">Your GPA out of 10: </p>
+</div>
+
+<!-- Section for CGPA Calculator (hidden by default) -->
+<div id="cgpaSection" style="display: none;">
+  <h3>CGPA Calculator</h3>
+  <label for="numSemesters">Number of Semesters:</label>
+  <input type="number" id="numSemesters" min="1" placeholder="Enter number of semesters">
+  <button class="link" id="gpa-button" onclick="addSemesterRows()">Add Semesters</button>
+
+  <!-- <table id="semesterTable"> -->
+      <!-- Rows will be dynamically added here -->
+  <!-- </table> -->
+  <!-- GPA Table -->
+<table id="subjectTableGPA">
+  <thead>
+      <tr>
+          <th>Subject</th>
+          <th>Credits</th>
+          <th>Grade</th>
+      </tr>
+  </thead>
+  <tbody>
+      <!-- Rows will be added dynamically here -->
+  </tbody>
+</table>
+
+<!-- CGPA Table -->
+<table id="semesterTable">
+  <thead>
+      <tr>
+          <th>Semester</th>
+          <th>Total Credits</th>
+          <th>GPA</th>
+      </tr>
+  </thead>
+  <tbody>
+      <!-- Rows will be added dynamically here -->
+  </tbody>
+</table>
+
+
+  <button class="link" id="gpa-button" onclick="calculateCGPA()">Calculate CGPA</button>
+  <button class="link" id="gpa-button" onclick="resetCGPAForm()">Reset</button>
+
+  <p id="resultCGPA">Your CGPA out of 10: </p>
+</div>
+
+      
+          
+          <footer>
+            <div class="footer-container" id="5">
+              <div class="contact-form">
+                <h3>Contact the Developer</h3>
+                <form action="https://formspree.io/f/mbljrqpg" method="POST">
+                  <div class="form-row">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+                  </div>
+                  <div class="form-row">
+                    <label for="query">Your Query:</label>
+                    <textarea id="query" name="query" rows="4" required></textarea>
+                  </div>
+                  <button type="submit">Submit</button>
+                </form>
+              </div>
+          
+              <div class="share-resources">
+                <h3>Share Your Resources</h3>
+                  <button onclick="window.open('https://forms.gle/deF3KTJCSZyFjdkB7', '_blank')" >Share Now</button>
+                </a>
+              </div>
+            </div>
+          </footer>
+<script src="script.js"></script>
+</body>
+</html>
