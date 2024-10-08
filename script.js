@@ -28,12 +28,10 @@ function currentSlide(n) {
 
 
 // Attendance percentage calculator
-const first = document.getElementById('man');
 const second = document.getElementById('enter');
 const attended = document.getElementById('enter_2');
 const submit = document.getElementById('submit');
 const resultsTable = document.getElementById('results').getElementsByTagName('tbody')[0];
-const resultsTableElement = document.getElementById('results');
 
 // Initialize input fields
 second.style.display = 'none';
@@ -41,14 +39,12 @@ attended.style.display = 'none';
 submit.style.display = 'none';
 
 // Show input fields on button click
-first.addEventListener('click', () => {
-  // first.style.display = 'none';
+document.getElementById('man').addEventListener('click', () => {
   second.style.display = 'inline';
   attended.style.display = 'inline';
   submit.style.display = 'inline';
 });
 
-// Calculate attendance percentage on submit
 submit.addEventListener('click', () => {
   const number_1 = parseInt(second.value);
   const number_2 = parseInt(attended.value);
@@ -58,23 +54,28 @@ submit.addEventListener('click', () => {
     return;
   }
 
-  const total_hours = [];
-  const attended_hours = [];
+  // Remove existing table body rows
+  resultsTable.innerHTML = '';
 
   for (let i = 60; i <= 100; i += 5) {
-    total_hours.push(`${i}%`);
     const percent = number_1 * (i / 100);
     const final = (percent - number_2).toFixed(2);
-    attended_hours.push(final);
 
     const newRow = resultsTable.insertRow();
     newRow.insertCell(0).innerHTML = `${i}%`;
-    newRow.insertCell(1).innerHTML = `${final} hours`;
+    
+    // Check if hours to attend exceed available hours
+    if (number_2 > percent) {
+      newRow.insertCell(1).innerHTML = 'Obtained';
+    } else {
+      newRow.insertCell(1).innerHTML = `${final} hours`;
+    }
   }
-
-  // Make the table visible after submit
-  resultsTableElement.style.visibility = 'visible';
+  
+  // Ensure the table is fully visible including the header
+  resultsTable.closest('table').style.visibility = 'visible';
 });
+
 
 function goToLink(url) {
   window.location.href = url;
@@ -229,7 +230,6 @@ submit_2.addEventListener('click', function () {
         result.innerHTML = `
           <span class="average-mark">Average Marks: ${average}</span>
           <br>
-          <span style="color: red;">Please enter valid attendance and assignment marks!</span>
         `;
       }
     }
