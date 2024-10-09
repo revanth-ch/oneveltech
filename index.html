@@ -10,7 +10,7 @@
 <body>
 
     <div class="navbar">
-        <!-- Logo Section -->
+        <!-- Logo -->
         <div class="navbar-logo">
             <img src="images/logo.png" alt="Logo">
         </div>
@@ -37,8 +37,9 @@
     </div>
     <br>
 
+
+    <!--links-->
     <div class="Links" id="1"><h1>LINKS</h1></div>
-    
     <div class="links-buttons">
         <button class="link" onclick="window.open('http://ams.veltech.edu.in/', '_blank')">AMS</button>
         <button class="link" onclick="window.open('http://results.veltech.edu.in/Stulogin/index.aspx', '_blank')">Results</button>
@@ -49,25 +50,23 @@
     <div class="Linkss" id="3"><h1>Materials</h1></div>
 
     <div class="card-container">
-        <!-- Card for 1st Year -->
+
+        <!-- Cards -->
         <div class="card">
           <h2>1st Year</h2>
           <button onclick="window.open('https://drive.google.com/drive/folders/12tQU6b-NE870Sl0V3H9R3WMHaKYOx01b?usp=drive_link', '_blank')">NOTES</button>
         </div>
       
-        <!-- Card for 2nd Year -->
         <div class="card">
           <h2>2nd Year</h2>
           <button onclick="window.open('https://drive.google.com/drive/folders/1CW7EmaBrvPPRFuNi5mdby9wC1oD3vCe6?usp=drive_link' ,'_blank' )">NOTES</button>
         </div>
       
-        <!-- Card for 3rd Year -->
         <div class="card">
           <h2>3rd Year</h2>
           <button onclick="window.open('https://drive.google.com/drive/folders/19lxSHIjjlkW_AEC0gU0-MQJG6wT1-Yj2?usp=drive_link', '_blank' )">NOTES</button>
         </div>
       
-        <!-- Card for 4th Year -->
         <div class="card">
           <h2>4th Year</h2>
           <button onclick="window.open('https://drive.google.com/drive/folders/1wPHCdRJie3O9YV9Hjcq0LF7epPKbXc4w?usp=drive_link', '_blank' )">NOTES</button>  
@@ -83,13 +82,12 @@
 
 
     <div class="attendance-section">
-        <!-- Intelligent Attendance -->
-        <!-- <button class="link" id="man" onclick="showInputs('ta-container')">Attendance</button> -->
+        <!-- Attendance -->
         <input type="number" id="enter" placeholder="total hours">
         <input type="number" id="enter_2" placeholder="attended hours">
         <button id="submit" class="link">Submit</button>
         
-        <!-- Table for results -->
+        <!--results table -->
         <table id="results">
           <thead>
             <tr>
@@ -101,6 +99,8 @@
         </table>
       </div>
       <div>
+
+
         <div class="Percentages-button">
         <button id="unit" class="link">Unit Test</button>
         <button id="mid" class="link">Mid</button></div>
@@ -120,63 +120,56 @@
           <button class="link" onclick="showGPASection()">Calculate GPA</button>
           <button class="link" onclick="showCGPASection()">Calculate CGPA</button>
       </div>
-      <!-- Section for GPA Calculator (hidden by default) -->
+      <!--GPA Calculator -->
 <div id="gpaSection" style="display: none;">
   <input type="number" id="numSubjectsGPA" min="1" placeholder="Enter number of subjects">
-  <button class="link" id="gpa-button" onclick="addSubjectRowsGPA()">Add Subjects</button>
-
-  <table id="subjectTableGPA">
-      <!-- Rows will be dynamically added here -->
-  </table>
-
-  <button class="link" id="gpa-button" onclick="calculateGPA()">Calculate GPA</button>
-  <button class="link" id="gpa-button" onclick="resetGPAForm()">Reset</button>
+  <div class="gpa-button-container">
+    <button class="link" id="add-subjects-gpa" onclick="addSubjectRowsGPA()">Add Subjects</button>
+    <table id="subjectTableGPA"></table>
+    <div class="gpa-actions">
+      <button class="link" id="calculate-gpa" onclick="calculateGPA()">Calculate GPA</button>
+      <button class="link" id="reset-gpa" onclick="resetGPAForm()">Reset</button>
+    </div>
+  </div>
 
   <p id="resultGPA">Your GPA out of 10: </p>
 </div>
 
-<!-- Section for CGPA Calculator (hidden by default) -->
+<!--CGPA Calculator-->
 <div id="cgpaSection" style="display: none;">
-  <h3>CGPA Calculator</h3>
-  <label for="numSemesters">Number of Semesters:</label>
   <input type="number" id="numSemesters" min="1" placeholder="Enter number of semesters">
-  <button class="link" id="gpa-button" onclick="addSemesterRows()">Add Semesters</button>
-
-  <!-- <table id="semesterTable"> -->
-      <!-- Rows will be dynamically added here -->
-  <!-- </table> -->
-  <!-- GPA Table -->
-<table id="subjectTableGPA">
-  <thead>
-      <tr>
+  <div class="cgpa-container">
+    <button class="link" id="add-semester-button" onclick="addSemesterRows()">Add Semesters</button>
+    
+    <!-- Subject Table -->
+    <table id="subjectTableGPA">
+      <thead>
+        <tr>
           <th>Subject</th>
           <th>Credits</th>
           <th>Grade</th>
-      </tr>
-  </thead>
-  <tbody>
-      <!-- Rows will be added dynamically here -->
-  </tbody>
-</table>
-
-<!-- CGPA Table -->
-<table id="semesterTable">
-  <thead>
-      <tr>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    
+    <!-- CGPA Table -->
+    <table id="semesterTable">
+      <thead>
+        <tr>
           <th>Semester</th>
           <th>Total Credits</th>
           <th>GPA</th>
-      </tr>
-  </thead>
-  <tbody>
-      <!-- Rows will be added dynamically here -->
-  </tbody>
-</table>
-
-
-  <button class="link" id="gpa-button" onclick="calculateCGPA()">Calculate CGPA</button>
-  <button class="link" id="gpa-button" onclick="resetCGPAForm()">Reset</button>
-
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    
+    <div class="cgpa-actions">
+      <button class="link" id="calculate-cgpa-button" onclick="calculateCGPA()">Calculate CGPA</button>
+      <button class="link" id="reset-cgpa-button" onclick="resetCGPAForm()">Reset</button>
+    </div>
+  </div>
   <p id="resultCGPA">Your CGPA out of 10: </p>
 </div>
 
@@ -192,7 +185,7 @@
                     <input type="text" id="name" name="name" required>
                   </div>
                   <div class="form-row">
-                    <label for="query">Your Query:</label>
+                    <label for="query">Your Feedback:</label>
                     <textarea id="query" name="query" rows="4" required></textarea>
                   </div>
                   <button type="submit">Submit</button>
