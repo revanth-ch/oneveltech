@@ -1,4 +1,4 @@
-// Slideshow functionality
+
 let slideIndex = 0;
 const slides = document.getElementsByClassName("mySlides");
 
@@ -16,29 +16,29 @@ function showSlides() {
   setTimeout(showSlides, 3000);
 }
 
-// Next/previous controls
+
 function plusSlides(n) {
   showSlidesManual(slideIndex += n);
 }
 
-// Thumbnail image controls
+
 function currentSlide(n) {
   showSlidesManual(slideIndex = n);
 }
 
 
-// Attendance percentage calculator
+
 const second = document.getElementById('enter');
 const attended = document.getElementById('enter_2');
 const submit = document.getElementById('submit');
 const resultsTable = document.getElementById('results').getElementsByTagName('tbody')[0];
 
-// Initialize input fields
+
 second.style.display = 'none';
 attended.style.display = 'none';
 submit.style.display = 'none';
 
-// Show input fields on button click
+
 document.getElementById('man').addEventListener('click', () => {
   second.style.display = 'inline';
   attended.style.display = 'inline';
@@ -54,7 +54,7 @@ submit.addEventListener('click', () => {
     return;
   }
 
-  // Remove existing table body rows
+ 
   resultsTable.innerHTML = '';
 
   for (let i = 60; i <= 100; i += 5) {
@@ -64,7 +64,7 @@ submit.addEventListener('click', () => {
     const newRow = resultsTable.insertRow();
     newRow.insertCell(0).innerHTML = `${i}%`;
     
-    // Check if hours to attend exceed available hours
+
     if (number_2 > percent) {
       newRow.insertCell(1).innerHTML = 'Obtained';
     } else {
@@ -72,7 +72,7 @@ submit.addEventListener('click', () => {
     }
   }
   
-  // Ensure the table is fully visible including the header
+
   resultsTable.closest('table').style.visibility = 'visible';
 });
 
@@ -94,7 +94,7 @@ const ass = document.getElementById('ass');
 let average = 0;
 let isMidTest = false;
 
-// Initially hide the inputs and submit button
+
 test_1.style.display = 'none';
 test_2.style.display = 'none';
 test_3.style.display = 'none';
@@ -104,13 +104,13 @@ ass.style.display = 'none';
 unit.style.display = 'none';
 mid.style.display = 'none';
 
-// Show inputs for Unit Test/Mid Test when "Marks" button is clicked
+
 document.getElementById('marks').addEventListener('click', function(){
   unit.style.display = 'block';
   mid.style.display = 'block';
 });
 
-// Show inputs for Unit Test when "Unit" button is clicked
+
 unit.addEventListener('click', function () {
   test_1.style.display = 'block';
   test_2.style.display = 'block';
@@ -119,7 +119,7 @@ unit.addEventListener('click', function () {
   isMidTest = false;
 });
 
-// Show inputs for Mid Test when "Mid" button is clicked
+
 mid.addEventListener('click', function () {
   test_1.style.display = 'block';
   test_2.style.display = 'block';
@@ -130,7 +130,7 @@ mid.addEventListener('click', function () {
   isMidTest = true;
 });
 
-// Calculate average marks when the submit button is clicked
+
 submit_2.addEventListener('click', function () {
   const marks1 = parseInt(test_1.value);
   const marks2 = parseInt(test_2.value);
@@ -157,7 +157,7 @@ submit_2.addEventListener('click', function () {
   }
 });
 
-// Calculate final total marks including attendance and assignment for Unit Test
+
 submit_2.addEventListener('click', function () {
   if (!isMidTest) {
     const attMarks = parseInt(att.value);
@@ -171,7 +171,7 @@ submit_2.addEventListener('click', function () {
     }
   }
 });
-// Calculate average marks when the submit button is clicked
+
 submit_2.addEventListener('click', function () {
   // ...
   result.innerHTML = `
@@ -182,7 +182,6 @@ submit_2.addEventListener('click', function () {
   // ...
 });
 
-// Calculate final total marks including attendance and assignment for Unit Test
 submit_2.addEventListener('click', function () {
   if (!isMidTest) {
     // ...
@@ -191,7 +190,7 @@ submit_2.addEventListener('click', function () {
   }
 });
 
-// Calculate average marks and total marks when the submit button is clicked
+
 submit_2.addEventListener('click', function () {
   const marks1 = parseInt(test_1.value);
   const marks2 = parseInt(test_2.value);
@@ -215,7 +214,7 @@ submit_2.addEventListener('click', function () {
       ass.style.display = 'block';
       submit_2.textContent = "Calculate Total Marks";
 
-      // Calculate total marks after attendance and assignment input
+    
       const attMarks = parseInt(att.value);
       const assMarks = parseInt(ass.value);
 
@@ -240,21 +239,21 @@ submit_2.addEventListener('click', function () {
 
 
 
-// Function to add rows for GPA calculation based on number of subjects
+
 function addSubjectRowsGPA() {
   const numSubjectsInput = document.getElementById('numSubjectsGPA').value;
   const numSubjects = parseInt(numSubjectsInput);
 
-  // Check if the input is a valid number greater than 0
+
   if (isNaN(numSubjects) || numSubjects <= 0) {
       alert('Please enter a valid number of subjects.');
       return;
   }
 
   const subjectTable = document.querySelector('#subjectTableGPA');
-  subjectTable.innerHTML = ''; // Clear any existing rows
+  subjectTable.innerHTML = ''; 
 
-  // Create table headings
+
   const thead = document.createElement('thead');
   thead.innerHTML = `
     <tr>
@@ -265,11 +264,10 @@ function addSubjectRowsGPA() {
   `;
   subjectTable.appendChild(thead);
 
-  // Create table body
+
   const tbody = document.createElement('tbody');
   subjectTable.appendChild(tbody);
 
-  // Loop through and create rows
   for (let i = 0; i < numSubjects; i++) {
       const row = document.createElement('tr');
       row.innerHTML = `
@@ -292,21 +290,21 @@ function addSubjectRowsGPA() {
   subjectTable.style.visibility = 'visible';
 }
 
-// Function to add rows for CGPA calculation based on number of semesters
+
 function addSemesterRows() {
   const numSemestersInput = document.getElementById('numSemesters').value;
   const numSemesters = parseInt(numSemestersInput);
 
-  // Check if the input is valid
+  
   if (isNaN(numSemesters) || numSemesters <= 0) {
       alert('Please enter a valid number of semesters.');
       return;
   }
 
   const semesterTable = document.querySelector('#semesterTable');
-  semesterTable.innerHTML = ''; // Clear any existing rows
+  semesterTable.innerHTML = ''; 
 
-  // Create table headings
+  
   const thead = document.createElement('thead');
   thead.innerHTML = `
     <tr>
@@ -317,11 +315,11 @@ function addSemesterRows() {
   `;
   semesterTable.appendChild(thead);
 
-  // Create table body
+  
   const tbody = document.createElement('tbody');
   semesterTable.appendChild(tbody);
 
-  // Loop through and create rows
+  
   for (let i = 0; i < numSemesters; i++) {
       const row = document.createElement('tr');
       row.innerHTML = `
@@ -335,25 +333,25 @@ function addSemesterRows() {
 }
 
 
-// Function to show the GPA/CGPA options when GPA button is clicked
+
 function showGPAOptions() {
   document.getElementById('gpaOptions').style.display = 'block';
 }
 
-// Function to show GPA section
+
 function showGPASection() {
   document.getElementById('gpaSection').style.display = 'block';
   document.getElementById('cgpaSection').style.display = 'none';
 }
 
-// Function to show CGPA section
+
 function showCGPASection() {
   document.getElementById('cgpaSection').style.display = 'block';
   document.getElementById('gpaSection').style.display = 'none';
 }
 
 
-// Function to calculate GPA
+
 function calculateGPA() {
   const credits = document.querySelectorAll('#subjectTableGPA .credit');
   const grades = document.querySelectorAll('#subjectTableGPA .grade');
@@ -371,7 +369,7 @@ function calculateGPA() {
   document.getElementById('resultGPA').textContent = 'Your GPA out of 10: ' + gpaOutOf10.toFixed(2);
 }
 
-// Function to reset GPA form
+
 function resetGPAForm() {
   document.getElementById('numSubjectsGPA').value = '';
   document.querySelector('#subjectTableGPA').innerHTML = ''; 
@@ -379,7 +377,7 @@ function resetGPAForm() {
 }
 
 
-// Function to calculate CGPA
+
 function calculateCGPA() {
   const semesters = document.querySelectorAll('#semesterTable tbody tr');
   let totalCredits = 0;
@@ -403,7 +401,7 @@ function calculateCGPA() {
   const cgpaOutOf10 = totalPoints / totalCredits;
   document.getElementById('resultCGPA').textContent = 'Your CGPA out of 10: ' + cgpaOutOf10.toFixed(2);
 }
-// Function to reset CGPA form
+
 function resetCGPAForm() {
   document.getElementById('numSemesters').value = '';
   document.querySelector('#semesterTable').innerHTML = ''; 
