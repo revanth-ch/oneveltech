@@ -1,32 +1,4 @@
 
-let slideIndex = 0;
-const slides = document.getElementsByClassName("mySlides");
-
-showSlides();
-
-function showSlides() {
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {
-    slideIndex = 1;
-  }
-  slides[slideIndex - 1].style.display = "block";
-  setTimeout(showSlides, 3000);
-}
-
-
-function plusSlides(n) {
-  showSlidesManual(slideIndex += n);
-}
-
-
-function currentSlide(n) {
-  showSlidesManual(slideIndex = n);
-}
-
-
 
 const second = document.getElementById('enter');
 const attended = document.getElementById('enter_2');
